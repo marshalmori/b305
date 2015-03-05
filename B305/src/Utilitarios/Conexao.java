@@ -1,3 +1,10 @@
+/*
+ * Autor: Marshal Mori Cavalheiro
+ * email: marshalmori@gmail.com
+ * Projeto: B 305
+ */
+
+
 package Utilitarios;
 
 
