@@ -7,15 +7,9 @@
 
 package Formularios;
 
-/**
- *
- * @author marshal
- */
+
 public class TelaInsereOriginal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TelaInsereOriginal
-     */
     public TelaInsereOriginal() {
         initComponents();
     }

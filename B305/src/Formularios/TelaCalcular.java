@@ -10,111 +10,58 @@ import Utilitarios.Conexao;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
 
 
 
-
-
-/**
- *
- * @author marshal
- */
 public class TelaCalcular extends javax.swing.JFrame {
     
    static Connection con;
    static Statement stm;
    static ResultSet rs;
    Conexao conexao = new Conexao();
-    
-    
-    
-    
- 
    
-    
    
 //##############################################################################
-    /**
-     * Creates new form TelaCadastrar
-     */
+   
     public TelaCalcular() {
         initComponents();  
         dadosTabela();
+        //valoresComboBox();
+        //preencheComboBox();
     }//fim construtor
-    
-    
-
+ 
  //#############################################################################
-    
-    
-    public void dadosTabela(){
-       
-       // DefaultTableModel model = new DefaultTableModel();
-       // model = conexao.selectBanco();
-        jTableBase.setModel(conexao.selectBanco());
-        
-        
-        
-    }//fim método DadosTabela
-//    public void selectTabelasDB() throws SQLException{
-//        
-//        
-//        
-//        try {
-//          
-//            
-//        } catch (Exception e) {
-//            
-//            
-//        }
-//        
-//        
-        
-//      try {
-//           
-//            //conexaoTelaCalcular.conexaoBanco();
-//            String query = "SELECT * FROM base;";
-//            ResultSet rs = stm.executeQuery(query);
-//            ResultSetMetaData rsmd = rs.getMetaData();
-//             
-//             
-//             int colunas = rsmd.getColumnCount();
-//             
-//             for(int i = 0; i <= colunas; i++){
-//                 modeloTabela.addColumn(rsmd.getColumnLabel(i));
-//             }
-//             
-//             while(rs.next()){
-//                 Object[] fila = new Object[colunas];
-//                 
-//                 for(int i = 0; i < colunas; i++){
-//                     fila[i] = rs.getObject(i + 1);
-//                 }//fim for
-//                 modeloTabela.addRow(fila);
-//             }
-//           
-//             
-//             
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, "Não ocorreu o select:"+e);
-//        }  
-//      
-        
 
-//    }
+    public void dadosTabela(){
+        jTableBase.setModel(conexao.selectBanco());           
+    }//fim método DadosTabela
     
+//     public void valoresComboBox(){
+//        conexao.preencheComboBox();
+//    }//fim método DadosTabela
     
-    
-    
-    
-//    public void dadosTabela(){
-//        jTableBase.setModel(modeloTabela);
-//        
-//    }//fim dadosTabela
-    
-    
-    
+//    
+////       public void preencheComboBox(){
+//         
+//         try {
+//             conexao.cabecalhoConetaBanco();
+//             rs = stm.executeQuery("SELECT nome FROM BASE;");
+//             System.out.println(rs);
+//             
+//              while(rs.next()){
+//                    String nome = rs.getString("nome");
+//                    jComboBoxNomeBases.addItem(nome);
+//                    
+//               }
+//             
+//             
+//         } catch (Exception e) {
+//             JOptionPane.showMessageDialog(null, "Não ocorreu o select para o jComboBox:"+e);
+//         }
+//       
+//    
+//      }
     
 
     /**
@@ -130,7 +77,7 @@ public class TelaCalcular extends javax.swing.JFrame {
         jPopupMenu1 = new javax.swing.JPopupMenu();
         jPopupMenu2 = new javax.swing.JPopupMenu();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        jComboBoxNomeBases = new javax.swing.JComboBox();
         jToggleButton1 = new javax.swing.JToggleButton();
         jPanel2 = new javax.swing.JPanel();
         jCheckBox1 = new javax.swing.JCheckBox();
@@ -173,10 +120,10 @@ public class TelaCalcular extends javax.swing.JFrame {
 
         jLabel2.setText("Base de Vídeos");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxNomeBases.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxNomeBases.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                jComboBoxNomeBasesActionPerformed(evt);
             }
         });
 
@@ -265,7 +212,6 @@ public class TelaCalcular extends javax.swing.JFrame {
 
         jLabel1.setText("Vídeo Original");
 
-        jTextFieldVideoOriginal.setText("jTextField1");
         jTextFieldVideoOriginal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldVideoOriginalActionPerformed(evt);
@@ -277,10 +223,12 @@ public class TelaCalcular extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextFieldVideoOriginal, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jLabel1)
+                .addGap(0, 549, Short.MAX_VALUE))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTextFieldVideoOriginal, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -353,7 +301,7 @@ public class TelaCalcular extends javax.swing.JFrame {
                     .addComponent(jScrollPane3)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBoxNomeBases, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -373,7 +321,7 @@ public class TelaCalcular extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxNomeBases, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -392,29 +340,18 @@ public class TelaCalcular extends javax.swing.JFrame {
 
    
     
-    
-    
-    
-    
     private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jMenu4MouseClicked
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void jComboBoxNomeBasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxNomeBasesActionPerformed
         
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_jComboBoxNomeBasesActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        // TODO add your handling code here:
-        //jTableBase.setModel(modeloTabela);
-        
-      //conexao.selectBanco();
-        
-        
-       
-              
+                        
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
@@ -485,7 +422,7 @@ public class TelaCalcular extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JCheckBox jCheckBox5;
     private javax.swing.JCheckBox jCheckBox6;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBoxNomeBases;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

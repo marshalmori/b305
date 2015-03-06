@@ -11,29 +11,49 @@ package Utilitarios;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import Formularios.TelaCalcular;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 
 
 
-/**
- *
- * @author marshal
- */
 public class Conexao {
     
    public Connection con = null;
    public Statement stm = null;
    DefaultTableModel modeloTabela = new DefaultTableModel();
+   DefaultComboBoxModel comboBoxModel = new DefaultComboBoxModel();
    ResultSet rs = null;
+   JComboBox combo = null;
+   
 
-
-    
+   
+   
+    public void cabecalhoConetaBanco(){
+        try {
+            Class.forName("org.sqlite.JDBC");
+            con = DriverManager.getConnection("jdbc:sqlite:b305.db");
+            stm = con.createStatement();
+            
+            
+        } catch (Exception e) {
+             JOptionPane.showMessageDialog(null, "Erro cabeçalho:" + e);
+            
+        }
+        
+    }
+   
+   
+   
     public void conexaoBanco(){
    
            
         try{
-            Class.forName("org.sqlite.JDBC");
-            con = DriverManager.getConnection("jdbc:sqlite:b305.db");
-            stm = con.createStatement();
+            
+            cabecalhoConetaBanco();
+//            Class.forName("org.sqlite.JDBC");
+//            con = DriverManager.getConnection("jdbc:sqlite:b305.db");
+             //stm = con.createStatement();
             
            
       String sql = "CREATE TABLE IF NOT EXISTS BASE" +
@@ -67,37 +87,34 @@ public class Conexao {
       stm.executeUpdate(sql2);
       stm.executeUpdate(sql3);
     
-      //stm.close();
-
+ 
       
     }catch(Exception e){
               JOptionPane.showMessageDialog(null, "Erro de conexão:" + e);
     
     }//fim catch
-        
-     
-      
+
         
 }//fim método conexaoBanco
     
-    
+ 
+    //#######################################################################
     
      public DefaultTableModel selectBanco(){
         
         try {
-            Class.forName("org.sqlite.JDBC");
-            con = DriverManager.getConnection("jdbc:sqlite:b305.db");
-            stm = con.createStatement();
+            
+            cabecalhoConetaBanco();
+//            Class.forName("org.sqlite.JDBC");
+//            con = DriverManager.getConnection("jdbc:sqlite:b305.db");
+//            stm = con.createStatement();
              
            
             rs = stm.executeQuery("SELECT * FROM BASE;");
             ResultSetMetaData rsmd = rs.getMetaData();                       
 
-              int colunas = rsmd.getColumnCount();
-              //System.out.println(colunas);
-              
-              
-                
+            int colunas = rsmd.getColumnCount();
+          
           for (int i = 0; i < colunas; i++){
            modeloTabela.addColumn(rsmd.getColumnLabel(i + 1));
           }
@@ -109,9 +126,7 @@ public class Conexao {
                  //System.out.println("Teste");
                  
                  for(int i = 0; i < colunas; i++){
-                     //System.out.println("fila: "+fila[i]);
-                     fila[i] = rs.getObject(i + 1);
-                     //System.out.println("fila: "+fila[i]);
+                    fila[i] = rs.getObject(i + 1);
                  }//fim for
                  
                  modeloTabela.addRow(fila);
@@ -124,30 +139,39 @@ public class Conexao {
     }
     
     
+    //######################################################################
+     
+//     public void preencheComboBox(){
+//         
+//         try {
+//             cabecalhoConetaBanco();
+//             rs = stm.executeQuery("SELECT nome FROM BASE;");
+//             
+//             
+//              while(rs.next()){
+//                  
+//                   Object fila [] = new Object[2];
+//                   
+//                   for
+//                   String nome = rs.getString("nome");
+//                   combo.addItem(nome);
+//               }
+//             
+//             
+//         } catch (Exception e) {
+//             JOptionPane.showMessageDialog(null, "Não ocorreu o select para o jComboBox:"+e);
+//         }
+//         
+//         
+//       
+//    
+//      }
     
     
     
     
     
-    
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++    
-//public void selectBanco (){
-//    try {
-//        Class.forName("org.sqlite.JDBC");
-//            con = DriverManager.getConnection("jdbc:sqlite:b305.db");
-//            stm = con.createStatement();
-//            
-//            
-//            String slqt = "SELECT * FROM BASE;";
-//            stm.executeQuery(slqt);
-//     
-//    } catch (Exception e) {
-//        
-//        
-//    }
-//      
-//}//fim método selectBanco
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++     
+     
      
     
 }//fim da classe

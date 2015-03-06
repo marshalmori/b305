@@ -15,23 +15,16 @@ import java.sql.SQLException;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author marshal
- */
+
 public class TelaCadastrar extends javax.swing.JFrame {
     
-   // TelaCalcular telaCalcular = new TelaCalcular();
     TelaInsereOriginal telaInsereOriginal = new TelaInsereOriginal();
     Conexao conexao = new Conexao();
     File [] files;
     String [] paths;
     JFileChooser chooser = new JFileChooser();
     
-    
-    /**
-     * Creates new form TelaCadastrar
-     */
+
     public TelaCadastrar() {
         initComponents();
         conexao.conexaoBanco();
@@ -631,7 +624,6 @@ public class TelaCadastrar extends javax.swing.JFrame {
 
     private void jTextFieldOriginalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldOriginalActionPerformed
      
-        //jTextFieldOriginal.setEditable(true);
         
     }//GEN-LAST:event_jTextFieldOriginalActionPerformed
 
@@ -646,18 +638,8 @@ public class TelaCadastrar extends javax.swing.JFrame {
 
     private void jButtonFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFinalizarActionPerformed
         // TODO add your handling code here:
-        
-      //  try {
-                //conexao.con.commit();
-               // conexao.con.close();
                 TelaCalcular telaCalcular = new TelaCalcular();
                 telaCalcular.setVisible(true);
-                
-
-       // } catch (SQLException ex) {
-      //       JOptionPane.showMessageDialog(rootPane, "\n Erro: " +ex);
-       // }
-      
     }//GEN-LAST:event_jButtonFinalizarActionPerformed
 
     private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
@@ -666,11 +648,8 @@ public class TelaCadastrar extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu4MouseClicked
 
     private void jButtonOriginalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOriginalActionPerformed
-        // TODO add your handling code here:
+       
         try{
-            
-            
-        // JFileChooser chooser = new JFileChooser();
          chooser.showOpenDialog(null);
          File file = chooser.getSelectedFile();
          String fileAbsolutePath = file.getAbsolutePath();
@@ -680,9 +659,7 @@ public class TelaCadastrar extends javax.swing.JFrame {
         }catch(Exception e){
             
         }
-         
-
-      
+     
     }//GEN-LAST:event_jButtonOriginalActionPerformed
 
     private void jComboBoxFPSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFPSActionPerformed
@@ -690,14 +667,8 @@ public class TelaCadastrar extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxFPSActionPerformed
 
     private void jButtonProcessadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProcessadosActionPerformed
-        // TODO add your handling code here:
-            
-    
-        
+
         try{
-            
-            
-        //JFileChooser chooser = new JFileChooser();
         chooser.setMultiSelectionEnabled(true);
         chooser.setFileSelectionMode(chooser.FILES_ONLY);
         chooser.showOpenDialog(null);
@@ -710,7 +681,6 @@ public class TelaCadastrar extends javax.swing.JFrame {
       
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Erro:"+e);
-            
         }
         
     }//GEN-LAST:event_jButtonProcessadosActionPerformed
@@ -764,133 +734,9 @@ public class TelaCadastrar extends javax.swing.JFrame {
                     jLabelLarguraObrigatorio.setVisible(false);
                    
             fazendoStatement();
-//                   try {
-//      
-//
-//                        PreparedStatement pst = conexao.con.prepareStatement("INSERT INTO BASE (nome,origem, contato, url) "
-//                         + "VALUES (?,?,?,?)");
-//                        pst.setString(1, jTextFieldNomeBase.getText());
-//                        pst.setString(2, jTextFieldOrigem.getText());
-//                        pst.setString(3, jTextFieldContato.getText());
-//                        pst.setString(4, jTextFieldURL.getText());
-//              
-//           
-//           
-//                       PreparedStatement pst2 = conexao.con.prepareStatement("INSERT INTO ORIGINAL (path_original, tipo_video, altura, largura, tempo, subamostragem, fps, numero_frames, varredura, nr_bits, observacao) "
-//                               + "VALUES (?,?,?,?,?,?,?,?,?,?,?)");
-//                       pst2.setString(1, jTextFieldOriginal.getText());
-//                       pst2.setString(2, (String) jComboBox2.getSelectedItem());
-//                       pst2.setInt(3, Integer.valueOf(jTextFieldAltura.getText()));
-//                       pst2.setInt(4, Integer.valueOf(jTextFieldLargura.getText()));
-//                       pst2.setDouble(5, Double.valueOf(jTextFieldTempo.getText()));
-//                       pst2.setString(6, (String)jComboBox1.getSelectedItem());
-//                       pst2.setDouble(7, Double.valueOf((String)jComboBox3.getSelectedItem()));
-//                       pst2.setInt(8, Integer.valueOf(jTextFieldNumeroDeFrames.getText()));
-//                       pst2.setString(9, (String) jComboBox5.getSelectedItem());
-//                       pst2.setInt(10, Integer.valueOf((String)jComboBox6.getSelectedItem()));
-//                       pst2.setString(11, jTextArea1.getText());
-//           
-//           
-//
-//
-//                        PreparedStatement pst3 = conexao.con.prepareStatement("INSERT INTO DISTORCIDOS (path_distorcido) "
-//                               + "VALUES (?)");       
-//                           for (int index = 0; index < files.length; index++) {
-//                                pst3.setString(1, files[index].toString());
-//                                pst3.executeUpdate(); //mmc - o pst3.executeUpdate está dentro do for porque tem atualizar o banco a cada inserção.
-//                       }  
-//
-//
-//                            pst.executeUpdate();
-//                            pst2.executeUpdate();
-//      
-//          
-//
-//                            JOptionPane.showMessageDialog(rootPane, "Salvo com sucesso!.");
-//                               
-//                    } catch (SQLException ex) {
-//                            JOptionPane.showMessageDialog(rootPane, "\n Erro: " +ex);
-//                    }//fim do catch
-
-                    
-
-//
-//                           jTextFieldNomeBase.setText("");
-//                           jTextFieldOrigem.setText("");
-//                           jTextFieldURL.setText("");
-//                           jTextFieldOriginal.setText("");
-//                           jTextFieldContato.setText("");
-
             
-            
-        }//fim if-else
-        
-        
-//       try {
-//      
-//        
-//             PreparedStatement pst = conexao.con.prepareStatement("INSERT INTO BASE (nome,origem, contato, url) "
-//                   + "VALUES (?,?,?,?)");
-//               pst.setString(1, jTextFieldNomeBase.getText());
-//               pst.setString(2, jTextFieldOrigem.getText());
-//               pst.setString(3, jTextFieldContato.getText());
-//               pst.setString(4, jTextFieldURL.getText());
-//              
-//           
-//     
-//           
-//           
-//           PreparedStatement pst2 = conexao.con.prepareStatement("INSERT INTO ORIGINAL (path_original, tipo_video, altura, largura, tempo, subamostragem, fps, numero_frames, varredura, nr_bits, observacao) "
-//                   + "VALUES (?,?,?,?,?,?,?,?,?,?,?)");
-//           pst2.setString(1, jTextFieldOriginal.getText());
-//           pst2.setString(2, (String) jComboBox2.getSelectedItem());
-//           pst2.setInt(3, Integer.valueOf(jTextField3.getText()));
-//           pst2.setInt(4, Integer.valueOf(jTextField4.getText()));
-//           pst2.setInt(5, Integer.valueOf(jTextField7.getText()));
-//           pst2.setString(6, (String)jComboBox1.getSelectedItem());
-//           pst2.setDouble(7, Double.valueOf((String)jComboBox3.getSelectedItem()));
-//           pst2.setInt(8, Integer.valueOf(jTextField6.getText()));
-//           pst2.setString(9, (String) jComboBox5.getSelectedItem());
-//           pst2.setInt(10, Integer.valueOf((String)jComboBox6.getSelectedItem()));
-//           pst2.setString(11, jTextArea1.getText());
-//           
-//           
-//           
-//          // int valor = jListProcessados.setSelectedIndices(jListProcessados.getSize());
-//           
-//            PreparedStatement pst3 = conexao.con.prepareStatement("INSERT INTO DISTORCIDOS (path_distorcido) "
-//                   + "VALUES (?)");       
-//               for (int index = 0; index < files.length; index++) {
-//                    pst3.setString(1, files[index].toString());
-//                    pst3.executeUpdate(); //mmc - o pst3.executeUpdate está dentro do for porque tem atualizar o banco a cada inserção.
-//           }  
-//            
-//            
-//          pst.executeUpdate();
-//          pst2.executeUpdate();
-//      
-//          
-//          
-//            JOptionPane.showMessageDialog(rootPane, "Salvo com sucesso!.");
-//           // conexao.con.close();
-//            
-//        } catch (SQLException ex) {
-//            JOptionPane.showMessageDialog(rootPane, "\n Erro: " +ex);
-//        }//fim do catch
-//       
-//       
-//       
-//       
-//       jTextFieldNomeBase.setText("");
-//       jTextFieldOrigem.setText("");
-//       jTextFieldURL.setText("");
-//       jTextFieldOriginal.setText("");
-//       jTextFieldContato.setText("");
-
-       
-               
-        
-        
+        }
+                
     }//GEN-LAST:event_jButtonContinuarActionPerformed
 
     

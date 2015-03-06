@@ -8,16 +8,10 @@ package Formularios;
 
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author marshal
- */
 public class TelaPrincipal extends javax.swing.JFrame {
 
     TelaCadastrar telaCadastrar = new TelaCadastrar ();    
-    /**
-     * Creates new form TelaPrincipal
-     */
+   
     public TelaPrincipal() {
         initComponents();
     }
@@ -229,17 +223,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSairTelaPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairTelaPrincipalActionPerformed
-        // TODO add your handling code here:
-           int n = JOptionPane.showConfirmDialog(
-            null,
-            "Deseja sair da janela principal?",
-            "",
-            JOptionPane.YES_NO_OPTION);
-           
-           //System.out.printf("Print de n: %d", n);
+        
+        int n = JOptionPane.showConfirmDialog(null,"Deseja sair da janela principal?","",JOptionPane.YES_NO_OPTION);
+
 
         if(n == 0){
-            //JOptionPane.showMessageDialog(null, "HELLO");
            System.exit(0);
         }
 
@@ -253,14 +241,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSairTelaPrincipalActionPerformed
 
     private void jButtonCadastrarTelaPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarTelaPrincipalActionPerformed
-        // TODO add your handling code here:
+       
         telaCadastrar.setVisible(true);
-        //dispose();
-        
+              
     }//GEN-LAST:event_jButtonCadastrarTelaPrincipalActionPerformed
 
     private void jButtonCalcularPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCalcularPrincipalActionPerformed
-        // TODO add your handling code here:
         TelaCalcular telaCalcular = new TelaCalcular();
         telaCalcular.setVisible(true);
         

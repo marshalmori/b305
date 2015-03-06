@@ -8,10 +8,6 @@ package Principal;
 
 import Formularios.TelaPrincipal;
 
-/**
- *
- * @author marshal
- */
 public class Principal {
     
     
@@ -19,11 +15,6 @@ public class Principal {
         
         TelaPrincipal telaPrincipal = new TelaPrincipal();
         telaPrincipal.setVisible(true);
-        
-        
-        
-        
-        
-    }
+       }
     
 }
